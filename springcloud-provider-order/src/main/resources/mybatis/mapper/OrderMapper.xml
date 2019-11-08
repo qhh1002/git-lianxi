@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 可以认为是dao层接口的实现类    namespace 配置对应dao层接口的全路径 *****-->
+<mapper namespace="com.jk.mapper.OrderMapper">
+
+	<select id="findOrderListCount"  resultType="int">
+			select count(1) from t_good
+	</select>
+	
+	<select id="findOrderList" parameterType="map" resultType="com.jk.model.Goods">
+        select * from t_good  LIMIT #{start},#{end}
+	</select>
+
+  <select id="findTreeNodeList" parameterType="int" resultType="com.jk.model.TreeBean">
+	select id,url as path,pid,text from t_power where pid = #{id}
+  </select>
+
+</mapper>
